@@ -5,6 +5,7 @@ import { TeamsRoutingModule } from './teams-routing.module';
 import { UsersComponent } from './users/users.component';
 import { ProjectAssignmentComponent } from './project-assignment/project-assignment.component';
 import { NewUsersComponent } from './new-users/new-users.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { NewUsersComponent } from './new-users/new-users.component';
   ],
   imports: [
     CommonModule,
-    TeamsRoutingModule
+    TeamsRoutingModule,
+    ReactiveFormsModule
   ]
 })
 export class TeamsModule { }
