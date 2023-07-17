@@ -1,0 +1,33 @@
+.bg-color{
+    background-color:rgb(15,42,67);
+   
+}
+.logoutImg{
+    height: 25px;
+    width: 25px;
+}
+.project-model a {
+    font-size: 10px;
+}
+
+.status p {
+    font-size: 10px;
+}
+
+.inputbg {
+    background-color: rgb(248, 246, 247);
+}
+
+.inputbg:hover {
+    background-color: rgb(194, 194, 194) !important;
+}
+
+.rounded-circle {
+    width: 12%;
+    padding: 7px 0;
+}
+label{
+    font-size: 14px;
+    font-weight: bold;
+    color: grey;
+}
