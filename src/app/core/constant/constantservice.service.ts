@@ -16,7 +16,15 @@ export class ConstantserviceService {
       getAllUsers: 'GetAllUsers',
       getAllRole: 'GetAllRoles',
       createUser: 'CreateUser',
-      deleteUserById: 'Glitch2/DeleteUserById?id='
+      deleteUserById: 'Glitch2/DeleteUserById?id=',
+      getAllProjectUsers : 'GetAllProjectUsers',
+      getAllProject : 'GetAllProject'
+    },
+    
+    master :{
+      getAllIssueStatus : 'GetAllIssueStatus',
+      addNewStatus : 'AddNewStatus',
+      deleteStatusById : 'DeleteStatusById?id='
     }
   }
 

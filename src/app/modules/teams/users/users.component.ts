@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { TeamsService } from 'src/app/core/services/teams/teams.service';
 
@@ -9,7 +9,7 @@ import { TeamsService } from 'src/app/core/services/teams/teams.service';
   templateUrl: './users.component.html',
   styleUrls: ['./users.component.css']
 })
-export class UsersComponent {
+export class UsersComponent implements OnInit{
 
   usersArray: any[] = [];
   roleArray : any[] = [];
@@ -33,6 +33,10 @@ export class UsersComponent {
   }
 
   constructor(private http: HttpClient , private teamSrc : TeamsService ) {
+    
+  }
+
+  ngOnInit(): void {
     this.getAllUsers();
     this.getAllRole();
   }

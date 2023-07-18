@@ -27,4 +27,12 @@ export class TeamsService {
   deleteUserById(id: number): Observable<any> {
     return this.http.get(this.host + this.constantSrc.apiEndPoint.teams.deleteUserById + id)
   }
+
+  getAllProjectUsers(): Observable<any> {
+    return this.http.get(this.host + this.constantSrc.apiEndPoint.teams.getAllProjectUsers)
+  }
+
+  getAllProject():Observable<any> {
+    return this.http.get(this.host + this.constantSrc.apiEndPoint.teams.getAllProject)
+  }
 }

@@ -1,1 +1,146 @@
-<p>project-assignment works!</p>
+<div class="container-fluid user">
+    <div class="row mt-3">
+        <h4> Project-User Assignment</h4>
+    </div>
+    <div class="row mt-3">
+        <div class="col-3">
+            <input type="text" name="Search" placeholder="Search For Users" class="form-control">
+        </div>
+        <div class="col-2">
+            <button class="btn btn-outline-success  searchBtn"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
+                    viewBox="0 0 512 512">
+                    <path
+                        d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z" />
+                </svg>
+            </button>
+        </div>
+        <div class="col-7 text-end">
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Add </button>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-12">
+            <table class="table ">
+                <thead>
+                    <tr>
+                        <th>Sr No.</th>
+                        <th>Project Name</th>
+                        <th>User Email</th>
+                        <th>Role In Project</th>
+                        <th>Date</th>
+                        <th>Technical Stack</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let project of projectArray; let sr=index">
+                        <td>{{sr+1}}</td>
+                        <td >{{project.projectName}}</td>
+                        <td>{{project.userEmail}}</td>
+                        <td>{{project.roleInProject}}</td>
+                        <td>{{project.addedDate}}</td>
+                        <td>{{project.technicalStack}}</td>
+                        <td>
+                            <!-- <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#exampleModal" (click)="editUser(user.userId)">Edit</button> -->
+                            <button class="btn btn-danger" (click)="deleteUser(project)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Assign Project Users</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body mx-3">
+                <form [formGroup]="projectForm">
+                    <div class="row mt-2">
+                        <div class="col-4">
+                            <label for="" class="fw-semibold">Select Project </label>
+                            <select name="role" formControlName="projectName"  class="form-control form-select">
+                                <option value="Select">Select</option>
+                                <option [value]="item.projectId" *ngFor="let item of projectList">{{item.fullName}}</option>
+                            </select>
+                        </div> 
+                    </div>
+                    <div class="card mt-3">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-3">
+                                    <label for="" class="fw-semibold">Select User </label>
+                                    <select name="role" formControlName="userEmail"  class="form-control form-select">
+                                        <option value="Select">Select</option>
+                                        <option [value]="item.emailId" *ngFor="let item of usersArray">{{item.emailId}}</option>
+                                    </select>
+                                </div>
+                          
+                           
+                                <div class="col-3">
+                                    <label for="" class="fw-semibold">Select Role </label>
+                                    <select name="role" formControlName="roleInProject"  class="form-control form-select">
+                                        <option value="Select">Select</option>
+                                        <option [value]="item.role" *ngFor="let item of roleArray">{{item.role}}</option>
+                                    </select>
+                                </div>
+                            
+                           
+                                <div class="col-3">
+                                    <label for="" class="fw-semibold">Select Role </label>
+                                    <input type="text" name="stack" formControlName="technicalStack"  placeholder="technicalStack" class="form-control">
+                                </div>
+
+                                <div class="col-2 mt-4">
+                                    <span for="" class="fw-semibold">Active : <input type="checkbox" formControlName="isActive" name="checkbox"></span>
+                                </div>
+                                <div class="col-1 mt-3">
+                                    <button class="btn btn-sm btn-primary" (click)="AddData()">Add</button>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col">
+                                    <table class="table table-bordered">
+                                        <thead>
+                                            <tr>
+                                                <th>Sr No.</th>
+                                                <th>User</th>
+                                                <th>Role</th>
+                                                <th>Technical Stack</th>
+                                                <th>Is Active</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let item of tableData; let sr=index">
+                                                <td>{{sr+1}}</td>
+                                                <td>{{item.userEmail}}</td>
+                                                <td>{{item.roleInProject}}</td>
+                                                <td>{{item.technicalStack}}</td>
+                                                <td>{{item.isActive}}</td>
+                                                <td>
+                                                    <button class="btn btn-danger">Delete</button>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+               
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary">Reset</button>
+                <button type="button" class="btn btn-success" >Save</button>
+            </div>
+        </div>
+
