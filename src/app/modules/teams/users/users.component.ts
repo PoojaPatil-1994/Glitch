@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { TeamsService } from 'src/app/core/services/teams/teams.service';
+
 
 @Component({
   selector: 'app-users',
@@ -30,26 +32,26 @@ export class UsersComponent {
     })
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient , private teamSrc : TeamsService ) {
     this.getAllUsers();
     this.getAllRole();
   }
 
   getAllUsers() {
-    this.http.get("http://onlinetestapi.gerasim.in/api/Glitch2/GetAllUsers").subscribe((res: any) => {
+    this.teamSrc.getAllUsers().subscribe((res: any) => {
       this.usersArray = res.data;
     })
   }
 
   getAllRole(){
-    this.http.get("http://onlinetestapi.gerasim.in/api/Glitch2/GetAllRoles").subscribe((res: any) => {
+    this.teamSrc.getAllRole().subscribe((res: any) => {
       this.roleArray = res.data;
     })
   }
 
-  saveUser(){
+  createUser(){
     const formData = this.userForm.value;
-    this.http.post("http://onlinetestapi.gerasim.in/api/Glitch2/CreateUser",formData).subscribe((res: any) => {
+    this.teamSrc.createUser(formData).subscribe((res: any) => {
      if(res.result){
       alert("Save Successfully");
       this.getAllUsers();
@@ -61,16 +63,16 @@ export class UsersComponent {
   }
 
   editUser(id:number){
-    alert("hhh")
-    this.http.get("'http://onlinetestapi.gerasim.in/api/Glitch2/GetUserById?id=" +id).subscribe((res:any)=>{
-      if(res.result){
+    this.http.get("http://onlinetestapi.gerasim.in/api/Glitch2/GetUserById?id=" +id).subscribe((res:any)=>{
+     this.usersArray = res.data;
+    if(res.result){
         alert("Edit Successfully");
       }
       })
   }
 
   deleteUser(id:number){
-    this.http.get("http://onlinetestapi.gerasim.in/api/Glitch2/DeleteUserById?id=" +id).subscribe((res:any)=>{
+    this.teamSrc.deleteUserById(id).subscribe((res:any)=>{
       if(res.result){
         alert("Delete Successfully");
         this.getAllUsers();

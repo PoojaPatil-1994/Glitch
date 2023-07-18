@@ -21,7 +21,7 @@
     </div>
     <div class="row mt-3">
         <div class="col-12">
-            <table class="table">
+            <table class="table ">
                 <thead>
                     <tr>
                         <th>Sr No.</th>
@@ -34,7 +34,7 @@
                 <tbody>
                     <tr *ngFor="let user of usersArray; let sr=index">
                         <td>{{sr+1}}</td>
-                        <td>{{user.emailId}}</td>
+                        <td >{{user.emailId}}</td>
                         <td>{{user.roleName}}</td>
                         <td>{{user.technicalStack}}</td>
                         <td>
@@ -71,23 +71,20 @@
                         <select name="role" formControlName="role"  class="form-control">
                             <option value="Select">Select</option>
                             <option [value]="item.roleId" *ngFor="let item of roleArray">{{item.role}}</option>
-                           
                         </select>
                     </div>
                     <div class="row mt-2">
                         <span for="" class="fw-semibold">Active : <input type="checkbox" formControlName="isActive" name="checkbox"></span>
-
                     </div>
                     <div class="row mt-2">
                         <label for="" class="fw-semibold">Technical Stack</label>
                         <input type="text" name="Technical Stack" formControlName="technicalStack" placeholder="Technical Stack" class="form-control">
                     </div>
-
                 </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary">Reset</button>
-                <button type="button" class="btn btn-primary" (click)="saveUser()">Save</button>
+                <button type="button" class="btn btn-success" (click)="createUser()">Save</button>
             </div>
         </div>
     </div>

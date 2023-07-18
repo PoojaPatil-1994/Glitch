@@ -6,4 +6,18 @@ import { Injectable } from '@angular/core';
 export class ConstantserviceService {
 
   constructor() { }
+
+  apiCommonPart: any = {
+    apiStartPoint: "http://onlinetestapi.gerasim.in/api/Glitch2/"
+  }
+
+  apiEndPoint: any = {
+    teams: {
+      getAllUsers: 'GetAllUsers',
+      getAllRole: 'GetAllRoles',
+      createUser: 'CreateUser',
+      deleteUserById: 'Glitch2/DeleteUserById?id='
+    }
+  }
+
 }
