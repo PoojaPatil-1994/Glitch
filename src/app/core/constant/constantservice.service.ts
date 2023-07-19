@@ -24,7 +24,12 @@ export class ConstantserviceService {
     master :{
       getAllIssueStatus : 'GetAllIssueStatus',
       addNewStatus : 'AddNewStatus',
-      deleteStatusById : 'DeleteStatusById?id='
+      updateStatus : 'UpdateStatus',
+      deleteStatusById : 'DeleteStatusById?id=',
+      getAllIssueTypes : 'GetAllIssueTypes',
+      addNewType : 'AddNewType',
+      updateIssueType : 'UpdateIssueType',
+      deleteIssueTypeById: 'DeleteIssueTypeById?id='
     }
   }
 

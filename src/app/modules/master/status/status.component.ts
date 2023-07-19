@@ -11,18 +11,18 @@ export class StatusComponent implements OnInit {
   statusArray: any[] = [];
 
   statusForm:FormGroup = new FormGroup( {
-    "statusId": new FormControl(0),
-    "status":  new FormControl(''),
-    "isActive": new FormControl(''),
-    "orderNo": new FormControl(0)
+    statusId: new FormControl(0),
+    status:  new FormControl(''),
+    isActive: new FormControl(''),
+    orderNo: new FormControl(0)
   })
 
   initializationForm(){
     this.statusForm = new FormGroup( {
-      "statusId": new FormControl(0),
-      "status":  new FormControl(''),
-      "isActive": new FormControl(''),
-      "orderNo": new FormControl(0)
+      statusId: new FormControl(0),
+      status:  new FormControl(''),
+      isActive: new FormControl(''),
+      orderNo: new FormControl(0)
     })
   }
 
@@ -47,21 +47,33 @@ export class StatusComponent implements OnInit {
         alert("save Successfully")
         this.getAllIssueStatus();
         this.initializationForm();
-       
       }else{
         alert(res.message)
       }
     })
   }
 
-  // editStatus(obj: any){
-  //   this.statusForm = new FormGroup( {
-  //     "statusId": new FormControl(''),
-  //     "status":  new FormControl(''),
-  //     "isActive": new FormControl(''),
-  //     "orderNo": new FormControl(0)
-  //   })
-  // }
+  editStatus(obj: any){
+    this.statusForm = new FormGroup( {
+      statusId: new FormControl(obj.statusId),
+      status:  new FormControl(obj.status),
+      isActive: new FormControl(obj.isActive),
+      orderNo: new FormControl(obj.orderNo)
+    })
+  }
+
+  updateStatus() {
+    const obj = this.statusForm.value
+    this.masterSrc.updateStatus(obj).subscribe((res: any) => {
+      if (res.result) {
+        alert("Update Successfully")
+        this.getAllIssueStatus();
+        this.initializationForm();
+      }else{
+        alert(res.message)
+      }
+    })
+  }
 
   deleteStatus(id :any){
     this.masterSrc.deleteStatusById(id).subscribe((res: any) => {
