@@ -35,4 +35,10 @@ export class TeamsService {
   getAllProject():Observable<any> {
     return this.http.get(this.host + this.constantSrc.apiEndPoint.teams.getAllProject)
   }
+
+  getIssuesByFilter(obj:any): Observable<any> {
+    return this.http.post(this.host + this.constantSrc.apiEndPoint.filter.getIssuesByFilter,obj)
+  }
+
+  
 }

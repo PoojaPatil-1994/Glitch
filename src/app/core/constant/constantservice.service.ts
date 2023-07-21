@@ -30,6 +30,11 @@ export class ConstantserviceService {
       addNewType : 'AddNewType',
       updateIssueType : 'UpdateIssueType',
       deleteIssueTypeById: 'DeleteIssueTypeById?id='
+    },
+
+    filter : {
+      getIssuesByFilter : 'GetIssuesByFilter',
+      
     }
   }
 
