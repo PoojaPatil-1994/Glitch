@@ -27,7 +27,7 @@
         <div class="col-2">
             <select name="" id="" class="form-control" [(ngModel)]="issueFilterListObj.assignedTo">
                 <option  value="Select Project">Assign To</option>
-                <option  [value]="item.assignedTo" *ngFor="let item of userList" >{{item.userEmail}}</option>
+                <option  [value]="item.userId" *ngFor="let item of userList" >{{item.userEmail}}</option>
             </select>
         </div>
 
